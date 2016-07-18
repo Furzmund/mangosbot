@@ -31,7 +31,7 @@
 #include "Language.h"
 #include "Log.h"
 
-#include "../../plugins/ahbot/AhBot.h"
+//#include "../../plugins/ahbot/AhBot.h"
 
 enum eAuctionHouse
 {
@@ -221,7 +221,7 @@ void AuctionHouseMgr::SendAuctionSuccessfulMail(AuctionEntry* auction, SQLTransa
             .SendMailTo(trans, MailReceiver(owner, auction->owner), auction, MAIL_CHECK_MASK_COPIED, sWorld->getIntConfig(CONFIG_MAIL_DELIVERY_DELAY));
 
         // ahbot mod
-        auctionbot.Won(auction);
+        //auctionbot.Won(auction);
     }
 }
 
@@ -247,7 +247,7 @@ void AuctionHouseMgr::SendAuctionExpiredMail(AuctionEntry* auction, SQLTransacti
             .SendMailTo(trans, MailReceiver(owner, auction->owner), auction, MAIL_CHECK_MASK_COPIED, 0);
 
         // ahbot mod
-        auctionbot.Expired(auction);
+        //auctionbot.Expired(auction);
     }
     else
     {

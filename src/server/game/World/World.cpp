@@ -72,7 +72,7 @@
 TC_GAME_API std::atomic<bool> World::m_stopEvent(false);
 TC_GAME_API uint8 World::m_ExitCode = SHUTDOWN_EXIT_CODE;
 // playerbot mod
-#include "../../plugins/ahbot/AhBot.h"
+//#include "../../plugins/ahbot/AhBot.h"
 #include "../../plugins/playerbot/PlayerbotAIConfig.h"
 #include "../../plugins/playerbot/RandomPlayerbotMgr.h"
 
@@ -1949,8 +1949,8 @@ void World::SetInitialWorldSettings()
     if (uint32 realmId = sConfigMgr->GetIntDefault("RealmID", 0)) // 0 reserved for auth
         sLog->SetRealmId(realmId);
 
-    TC_LOG_INFO("server.loading", "Initializing AuctionHouseBot...");
-    auctionbot.Init();
+    //TC_LOG_INFO("server.loading", "Initializing AuctionHouseBot...");
+    //auctionbot.Init();
 
     sPlayerbotAIConfig.Initialize();
 }
@@ -2124,7 +2124,7 @@ void World::Update(uint32 diff)
         sAuctionMgr->Update();
 
         // ahbot mod
-        auctionbot.Update();
+        //auctionbot.Update();
     }
 
     // playerbot mod
@@ -2139,11 +2139,11 @@ void World::Update(uint32 diff)
     }
 
     /// <li> Handle AHBot operations
-    // if (m_timers[WUPDATE_AHBOT].Passed())
-    //{
-    //    sAuctionBot->Update();
-    //    m_timers[WUPDATE_AHBOT].Reset();
-    //}
+     if (m_timers[WUPDATE_AHBOT].Passed())
+    {
+        sAuctionBot->Update();
+        m_timers[WUPDATE_AHBOT].Reset();
+    }
     // end of playerbot mod
 
     /// <li> Handle file changes
